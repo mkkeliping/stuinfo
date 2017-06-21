@@ -103,7 +103,7 @@
                   <div class="form-group">
                       <label for="stumajor" class="col-sm-2 control-label">所属系号</label>
                       <div class="col-sm-10">
-                          <select>
+                          <select name="stumajor">
                             <option value="1">0001</option>
                           </select>
                       </div>
@@ -176,8 +176,9 @@
                   <div class="form-group">
                       <label for="stumajor-mod" class="col-sm-2 control-label">所属系号</label>
                       <div class="col-sm-10">
-                          <select>
-                            <option value="1"  >0001</option>
+                          <select name="stumajor">
+                            <option value="1">0001</option>
+
                           </select>
                       </div>
                   </div>
@@ -195,7 +196,7 @@
             <li>
                 <form class="form-horizontal" method="get" action="/cgi-bin/sx/del.cgi">
                     <div class="form-group">
-                        <label for="stuId-del" class="col-sm-2 control-label">输入要删除的学生Id</label>
+                        <label for="stuId-del" class="col-sm-2 control-label">输入要删除的学生stuID</label>
                         <div class="col-sm-10">
                             <input type="text" name="stuId" class="form-control" id="stuId-del" placeholder="输入学生Id">
                         </div>

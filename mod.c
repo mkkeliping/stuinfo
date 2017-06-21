@@ -90,8 +90,10 @@ int cgiMain()
 		mysql_close(db);
 		return -1;
 	}
-mysql_options(db,MYSQL_SET_CHARSET_NAME,"utf8");
-	sprintf(sql, "update STU set stuName='%s', stuSex= '%s',stuBorn= '%s', stuPolSta='%s',stuAdr='%s',stutel='%s',stumajor= %d ,where id = %d ", stuName,stuSex,stuBorn,stuPolSta,stuAdr,stutel,atoi(stumajor),atoi(stuID));
+
+	mysql_options(db,MYSQL_SET_CHARSET_NAME,"utf8");
+
+	sprintf(sql, "update Student set stuName='%s', stuSex= '%s',stuBorn= '%s', stuPolSta='%s',stuAdr='%s',stutel='%s',stumajor= %d where stuID = %d ", stuName,stuSex,stuBorn,stuPolSta,stuAdr,stutel,atoi(stumajor),atoi(stuID));
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));
