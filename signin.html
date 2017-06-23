@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息管理系统</title>
+    <link rel="stylesheet" type="text/css" href="./public/css/bootstrap.min.css">
+    <style type="text/css">
+    body {
+        height: 100%;
+        background-color: lightblue;
+    }
+
+
+    .header {
+      margin-top: 120px;
+        margin-bottom: 50px;
+    }
+
+    .operation>div {
+        padding: 15px;
+
+    }
+
+
+    .operation.row .text-center button {
+    	outline-style: none;
+      margin-top: 100px;
+
+    }
+    .container{
+      margin-left: 350px;
+    }
+    .form-horizontal{
+      margin-left: 230px;
+    }
+.btn btn-success{
+  margin-left: 100px;
+}
+    </style>
+</head>
+
+<body>
+    <h1 class="header text-center">欢迎进入河北地质大学登陆界面</h1>
+    <li>
+        <form class="form-horizontal" method="get" action="/student.html">
+          <div class="form-group">
+              <label for="stuID" class="col-sm-2 control-label">学生账号</label>
+              <div class="col-sm-6">
+                  <input type="text" name="stuID" class="form-control" id="stuID" placeholder="登陆账号">
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="Cno" class="col-sm-2 control-label">学生密码</label>
+              <div class="col-sm-6">
+                  <input type="text" name="Cno" class="form-control" id="Cno" placeholder="登陆密码">
+              </div>
+          </div>
+          <div class="text-center">
+                <button type="submit" class="btn btn-success">提交</button>
+                <button type="reset" class="btn btn-success">重置</button>
+            </div>
+        </form>
+    </li>
+
+    <script src="./public/js/jquery-3.0.0.min.js"></script>
+    <script src="./public/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+    	var btns = $(".operation button");
+    	var lis = $(".forms li");
+        btns.addClass("btn btn-primary btn-lg");
+
+        for (var i = 0; i < btns.length; i++){
+        	btns.eq(i).click(i, function(event){
+        		lis.eq(event.data).addClass("show").siblings().removeClass("show");
+        	});
+        }
+
+    });
+    </script>
+</body>
+
+</html>
