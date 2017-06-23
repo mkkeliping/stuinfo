@@ -69,7 +69,7 @@ foreign key (stuID)references Student(stuID),#学号是外码，参照表是Stud
 foreign key (Cno)references Course(Cno)#课程号是外码，参照表是Course
 )character set = utf8 ;
 
-create view view1
+create view view1#视图
 as
 select Student.stuID,Student.stuName,Student.stuSex,Student.stumajor,SC.Cno,SC.Grade
 from SC,Student
