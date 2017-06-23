@@ -3,18 +3,18 @@
 #include <stdlib.h>
 #include <mysql/mysql.h>
 #include "cgic.h"
-//char * headname = "head.html";
-//char * footname = "footer.html";
+char * headname = "head.html";
+char * footname = "footer.html";
 int cgiMain()
 {
-	//FILE * fd;
+	FILE * fd;
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 	char stuID[32] = "\0";
 	char Cno[32] = "\0";
 	char Grade[8]="\0";
 	int status = 0;
-	/*char ch;
-	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
+	char ch;
+	//fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 	if(!(fd = fopen(headname, "r"))){
 		fprintf(cgiOut, "Cannot open file, %s\n", headname);
 		return -1;
@@ -25,7 +25,7 @@ int cgiMain()
 		fprintf(cgiOut, "%c", ch);
 		ch = fgetc(fd);
 	}
-	fclose(fd);*/
+	fclose(fd);
 	status = cgiFormString("stuID",  stuID, 32);
 	if (status != cgiFormSuccess)
 	{
@@ -48,7 +48,7 @@ int cgiMain()
 
 	fprintf(cgiOut, "Cno= %s, Grade= %s, stuID = %s\n", Cno, Grade, stuID);
 
-	int ret;
+	//int ret;
 	char sql[128] = "\0";
 	MYSQL *db;
 
@@ -94,6 +94,7 @@ mysql_options(db,MYSQL_SET_CHARSET_NAME,"utf8");
 	}
 
 	fprintf(cgiOut, "add student score ok!\n");
+	fprintf(cgiOut, "<a href=\"/score.html\">返回</a>");
 	mysql_close(db);
 	return 0;
 }

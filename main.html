@@ -8,12 +8,14 @@
     <style type="text/css">
     body {
         height: 100%;
-        background-color: lightblue;
+        background-color: #00FFFF;
     }
 
+    ul li {
+    	list-style: none;
+    }
 
     .header {
-      margin-top: 120px;
         margin-bottom: 50px;
     }
 
@@ -23,30 +25,208 @@
 
     .operation.row .text-center button {
     	outline-style: none;
-      margin-top: 100px;
-    }
-    .container{
-      margin-left: 350px;
+      background-color: #4876FF;
     }
 
+    .forms li {
+        display: none;
+    }
+    .form-control{
+
+
+
+    }
+    .forms li button {
+        margin-right: 30px;
+        background-color: #33CC66;
+    }
     </style>
 </head>
 
 <body>
-    <h1 class="header text-center">欢迎进入河北地质大学信息管理系统</h1>
+  <a href="index.html"><button type="reset" class="btn btn-success">返回</button></a>  
+    <h1 class="header text-center">河北地质大学管理员界面</h1>
     <div class="container">
         <div class="operation row">
             <div class="text-center col-md-3 col-sm-6">
-                <a href="#"><button>学生登陆</button></a>
+                <button>添加学生信息</button>
             </div>
             <div class="text-center col-md-3 col-sm-6">
-                <a href="#"><button>教师登陆</button></a>
+                <button>查询学生信息</button>
             </div>
             <div class="text-center col-md-3 col-sm-6">
-                <a href="#"><button>管理人员</button></a>
+                <button>修改学生信息</button>
+            </div>
+            <div class="text-center col-md-3 col-sm-6">
+                <button>删除学生信息</button>
             </div>
         </div>
+        <ul class="forms">
+            <li class="show">
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/add.cgi">
+                    <div class="form-group">
+                        <label for="stuID" class="col-sm-2 control-label">学生学号</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuID" class="form-control" id="stuID" placeholder="请输入学生学号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuName" class="col-sm-2 control-label">学生姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuName" class="form-control" id="stuName" placeholder="请输入学生姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuSex" class="col-sm-2 control-label">学生性别</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuSex" class="form-control" id="stuSex" placeholder="请输入学生性别:男or女">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuBorn" class="col-sm-2 control-label">学生出生日期</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuBorn" class="form-control" id="stuBorn" placeholder="请输入学生出生日期年-月-日">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuPolSta" class="col-sm-2 control-label">学生政治面貌</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuPolSta" class="form-control" id="stuPolSta" placeholder="请输入政治面貌">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuAdr" class="col-sm-2 control-label">籍贯</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuAdr" class="form-control" id="stuAdr" placeholder="请输入籍贯">
+                        </div>
+                    </div>
 
+                  <div class="form-group">
+                      <label for="stutel" class="col-sm-2 control-label">学生电话</label>
+                      <div class="col-sm-10">
+                          <input type="text" name="stutel" class="form-control" id="stutel" placeholder="请输入学生电话">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="stumajor" class="col-sm-2 control-label">所属系号</label>
+                      <div class="col-sm-10">
+                          <select name="stumajor">
+                            <option value="0001">0001</option>
+                          </select>
+                      </div>
+                  </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">提交</button>
+                        <button type="reset" class="btn btn-success">重置</button>
+                    </div>
+                </form>
+            </li>
+            <li>
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/sel.cgi">
+                    <div class="form-group">
+                        <label for="name-sel" class="col-sm-2 control-label">输入姓名查询</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" class="form-control" id="name-sel" placeholder="输入*查询所有">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">提交</button>
+                        <button type="reset" class="btn btn-success">重置</button>
+                    </div>
+                </form>
+            </li>
+            <li>
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/mod.cgi">
+                    <div class="form-group">
+                        <label for="stuID-mod" class="col-sm-2 control-label">学生学号</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuID" class="form-control" id="stuID" placeholder="请输入学生学号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuName-mod" class="col-sm-2 control-label">学生姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuName" class="form-control" id="stuName" placeholder="请输入学生姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuSex-mod" class="col-sm-2 control-label">学生性别</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuSex" class="form-control" id="stuSex" placeholder="请输入学生性别:男or女">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuBorn-mod" class="col-sm-2 control-label">学生出生日期</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuBorn" class="form-control" id="stuBorn" placeholder="请输入学生出生日期年-月-日">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuPolSta-mod" class="col-sm-2 control-label">学生政治面貌</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuPolSta" class="form-control" id="stuPolSta" placeholder="请输入政治面貌">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuAdr-mod" class="col-sm-2 control-label">籍贯</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuAdr" class="form-control" id="stuAdr" placeholder="请输入籍贯">
+                        </div>
+                    </div>
+
+                  <div class="form-group">
+                      <label for="stutel-mod" class="col-sm-2 control-label">学生电话</label>
+                      <div class="col-sm-10">
+                          <input type="text" name="stutel" class="form-control" id="stutel" placeholder="请输入学生电话">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="stumajor-mod" class="col-sm-2 control-label">所属系号</label>
+                      <div class="col-sm-10">
+                          <select name="stumajor">
+                            <option value="0001">0001</option>
+
+                          </select>
+                      </div>
+                  </div>
+
+
+
+
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">提交</button>
+                        <button type="reset" class="btn btn-success">重置</button>
+                    </div>
+                </form>
+            </li>
+            <li>
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/del.cgi">
+                    <div class="form-group">
+                        <label for="stuId-del" class="col-sm-2 control-label">输入要删除的学生stuID</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="stuId" class="form-control" id="stuId-del" placeholder="输入学生Id">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuId-del" class="col-sm-2 control-label">输入要删除的学生状态</label>
+                        <div class="col-sm-8">
+                        <select class="form-control" name="sstatus">
+                          <option value="2">真删按1假删按0</option>
+                          <option value="1">1</option>
+                          <option value="0">0</option>
+                        </select>
+                        </div>
+                      </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">提交</button>
+                        <button type="reset" class="btn btn-success">重置</button>
+
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
     <script src="./public/js/jquery-3.0.0.min.js"></script>
     <script src="./public/js/bootstrap.min.js"></script>
     <script type="text/javascript">

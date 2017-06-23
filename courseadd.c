@@ -3,17 +3,17 @@
 #include <stdlib.h>
 #include <mysql/mysql.h>
 #include "cgic.h"
-//char * headname = "head.html";
-//char * footname = "footer.html";
+char * headname = "head.html";
+char * footname = "footer.html";
 int cgiMain()
 {
-	//FILE * fd;
+	FILE * fd;
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 
 	char Cno[32] = "\0";
   char Cname[32] = "\0";
 	int status = 0;
-	/*char ch;
+	char ch;
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 	if(!(fd = fopen(headname, "r"))){
 		fprintf(cgiOut, "Cannot open file, %s\n", headname);
@@ -25,7 +25,7 @@ int cgiMain()
 		fprintf(cgiOut, "%c", ch);
 		ch = fgetc(fd);
 	}
-	fclose(fd);*/
+	fclose(fd);
 	status = cgiFormString("Cno",  Cno, 32);
 	if (status != cgiFormSuccess)
 	{
@@ -41,7 +41,7 @@ int cgiMain()
 
 
 
-	int ret;
+	//int ret;
 	char sql[128] = "\0";
 	MYSQL *db;
 
@@ -87,6 +87,7 @@ mysql_options(db,MYSQL_SET_CHARSET_NAME,"utf8");
 	}
 
 	fprintf(cgiOut, "add Course  ok!\n");
+		fprintf(cgiOut, "<a href=\"/course.html\">返回</a>");
 	mysql_close(db);
 	return 0;
 }

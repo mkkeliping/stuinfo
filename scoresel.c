@@ -4,6 +4,8 @@
 #include <string.h>
 #include <mysql/mysql.h>
 #include "cgic.h"
+char * headname = "head.html";
+char * footname = "footer.html";
 
 
 int cgiMain()
@@ -22,7 +24,21 @@ int cgiMain()
 
 	char name[32] = "\0";
 	int status = 0;
+	FILE * fd;
+	char ch;
 
+	//fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
+	if(!(fd = fopen(headname, "r"))){
+		fprintf(cgiOut, "Cannot open file, %s\n", headname);
+		return -1;
+	}
+	ch = fgetc(fd);
+
+	while(ch != EOF){
+		fprintf(cgiOut, "%c", ch);
+		ch = fgetc(fd);
+	}
+	fclose(fd);
 	status = cgiFormString("name",  name, 32);
 	if (status != cgiFormSuccess)
 	{
@@ -68,7 +84,7 @@ mysql_options(db,MYSQL_SET_CHARSET_NAME,"	utf8");
 	{
 		fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));
 		mysql_close(db);
-		return ;
+		return -1 ;
 	}
 
 	MYSQL_RES *res;
@@ -76,7 +92,7 @@ mysql_options(db,MYSQL_SET_CHARSET_NAME,"	utf8");
 	if (res == NULL)
 	{
 		fprintf(cgiOut,"mysql_store_result fail:%s\n", mysql_error(db));
-		return ;
+		return -1;
 	}
 
 	fprintf(cgiOut, "<div class=\"container\"> <h1 class=\"text-center\">查询结果</h1>");
@@ -110,9 +126,9 @@ mysql_options(db,MYSQL_SET_CHARSET_NAME,"	utf8");
 		fprintf(cgiOut,"</tr>");
 	}
 	fprintf(cgiOut,"</table></div>");
-
-
-
 	mysql_close(db);
+	fprintf(cgiOut, "<a href=\"/score.html\">点我返回教师界面</a>");
+	fprintf(cgiOut, "<a href=\"/student.html\">点我返回学生界面</a>");
+
 	return 0;
 }
